@@ -2,16 +2,22 @@
 
 @{
     var items = this.Item?.Children ?? new List<common.Elements.LayoutElement>();
+    var pathPart = string.IsNullOrWhiteSpace(Path) ? nameof(Column) : Path;
+    var index = 0;
 }
-<div class="x-col @Item?.Style?.Class">
+<div x-path="@Path" class="x-col @Item?.Style?.Class">
     @foreach(var col in items)
     {
-        var parameters = new Dictionary<string, object>() { { "Item", col } };
+        var parameters = new Dictionary<string, object>() { { "Item", col }, { "Path", pathPart + $".Children[{index}]" } };
         <DynamicComponent Type="col.RenderType" Parameters="parameters" />
+        index += 1;
     }
 </div>
 
 @code {
+    [Parameter, AllowNull]
+    public string Path { get; set; }
+
     [Parameter, AllowNull]
     public common.Elements.Column Item { get; set; }
 }

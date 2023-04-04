@@ -10,6 +10,8 @@ namespace common.Elements
 		public virtual IEnumerable<LayoutElement>? Children { get; set; }
 
 		public abstract Type RenderType { get; init; }
+
+		public string? BindTo { get; set; }
 	}
 }
 

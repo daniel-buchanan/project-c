@@ -1,0 +1,26 @@
+﻿@using System.Diagnostics.CodeAnalysis
+
+@if(!string.IsNullOrWhiteSpace(Item.Label))
+{
+    <div class="input-group">
+        <span class="input-group-text">@Item.Label</span>
+        <input x-path="@Path"
+               class="x-label form-control @Item?.Style?.Class"
+               @bind="Item.Value" />
+    </div>
+}
+else
+{
+    <input x-path="@Path"
+           class="x-label form-control @Item?.Style?.Class"
+           @bind="Item.Value" />
+}
+
+@code {
+    [Parameter, AllowNull]
+    public string Path { get; set; }
+
+    [Parameter, AllowNull]
+    public common.Elements.Input Item { get; set; }
+}
+

@@ -1,17 +1,25 @@
 ﻿@using System.Diagnostics.CodeAnalysis
 
-<div class="x-layoutcontainer @this.Item?.Style?.Class">
-    @{
-        var items = this.Item?.Children ?? new List<common.Elements.LayoutElement>();
-    }
-    @foreach(var ele in items)
+@{
+    var items = this.Item?.Children ?? new List<common.Elements.LayoutElement>();
+    var pathPart = string.IsNullOrWhiteSpace(Path) ? "Root" : Path;
+    var index = 0;
+}
+
+<div x-path="@pathPart" class="x-layoutcontainer @this.Item?.Style?.Class">
+
+    @foreach (var ele in items)
     {
-        var parameters = new Dictionary<string, object>() { { "Item", ele } };
+        var parameters = new Dictionary<string, object>() { { "Item", ele }, { "Path", pathPart + $".Children[{index}]" } };
         <DynamicComponent Type="ele.RenderType" Parameters="parameters" />
+        index += 1;
     }
 </div>
 
 @code {
+    [Parameter, AllowNull]
+    public string Path { get; set; }
+
     [Parameter, AllowNull]
     public common.Elements.LayoutContainer Item { get; set; }
 }

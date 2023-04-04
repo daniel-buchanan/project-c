@@ -1,0 +1,9 @@
+﻿@using System.Diagnostics.CodeAnalysis
+
+<span class="x-label @Item?.Style?.Class">@Item?.Value</span>
+
+@code {
+    [Parameter, AllowNull]
+    public common.Elements.Label Item { get; set; }
+}
+

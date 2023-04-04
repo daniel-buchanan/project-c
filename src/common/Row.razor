@@ -1,0 +1,18 @@
+﻿@using System.Diagnostics.CodeAnalysis
+
+@{
+    var items = this.Item?.Children ?? new List<common.Elements.LayoutElement>();
+}
+<div class="x-row @Item?.Style?.Class">
+    @foreach(var col in items)
+    {
+        var parameters = new Dictionary<string, object>() { { "Item", col } };
+        <DynamicComponent Type="col.RenderType" Parameters="parameters" />
+    }
+</div>
+
+@code {
+    [Parameter, AllowNull]
+    public common.Elements.Row Item { get; set; }
+}
+

@@ -1,0 +1,72 @@
+﻿@page "/"
+
+<PageTitle>Index</PageTitle>
+
+<h1>Hello, world!</h1>
+
+Welcome to your new app.
+
+<SurveyPrompt Title="How is Blazor working for you?" />
+
+<common.LayoutContainer Item="layout" />
+
+@code {
+    private common.Elements.LayoutContainer layout = new common.Elements.LayoutContainer
+    {
+        Children = new List<common.Elements.LayoutElement>
+        {
+            new common.Elements.Label { Value = "Hello World" },
+            new common.Elements.LayoutContainer
+            {
+                Style = new common.LayoutStyle { Class = "container" },
+                Children = new List<common.Elements.LayoutElement>
+                {
+                    new common.Elements.Row
+                    {
+                        Style = new common.LayoutStyle { Class = "row" },
+                        Children = new List<common.Elements.LayoutElement>
+                        {
+                            new common.Elements.Column
+                            {
+                                Style = new common.LayoutStyle { Class = "col" },
+                                Children = new List<common.Elements.LayoutElement> { new common.Elements.Label { Value = "Hello World" } }
+                            },
+                            new common.Elements.Column
+                            {
+                                Style = new common.LayoutStyle { Class = "col" },
+                                Children = new List<common.Elements.LayoutElement> { new common.Elements.Label { Value = "Hello World" } }
+                            },
+                            new common.Elements.Column
+                            {
+                                Style = new common.LayoutStyle { Class = "col" },
+                                Children = new List<common.Elements.LayoutElement> { new common.Elements.Label { Value = "Hello World" } }
+                            }
+                        }
+                    },
+                    new common.Elements.Row
+                    {
+                        Style = new common.LayoutStyle { Class = "row" },
+                        Children = new List<common.Elements.LayoutElement>
+                        {
+                            new common.Elements.Column
+                            {
+                                Style = new common.LayoutStyle { Class = "col" },
+                                Children = new List<common.Elements.LayoutElement> { new common.Elements.Label { Value = "Hello World" } }
+                            },
+                            new common.Elements.Column
+                            {
+                                Style = new common.LayoutStyle { Class = "col" },
+                                Children = new List<common.Elements.LayoutElement> { new common.Elements.Label { Value = "Hello World" } }
+                            },
+                            new common.Elements.Column
+                            {
+                                Style = new common.LayoutStyle { Class = "col" },
+                                Children = new List<common.Elements.LayoutElement> { new common.Elements.Label { Value = "Hello World" } }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    };
+}

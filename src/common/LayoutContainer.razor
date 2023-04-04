@@ -1,0 +1,18 @@
+﻿@using System.Diagnostics.CodeAnalysis
+
+<div class="x-layoutcontainer @this.Item?.Style?.Class">
+    @{
+        var items = this.Item?.Children ?? new List<common.Elements.LayoutElement>();
+    }
+    @foreach(var ele in items)
+    {
+        var parameters = new Dictionary<string, object>() { { "Item", ele } };
+        <DynamicComponent Type="ele.RenderType" Parameters="parameters" />
+    }
+</div>
+
+@code {
+    [Parameter, AllowNull]
+    public common.Elements.LayoutContainer Item { get; set; }
+}
+
